@@ -22,7 +22,7 @@ Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('validate-login', [AuthController::class, 'validateLogin'])->name('login.validate');
 
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('dashboard', [AuthController::class, 'dashboard']);
+    Route::get('orders', [AuthController::class, 'dashboard']);
     Route::post('get-product', [AuthController::class, 'getProduct'])->name('get-product');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

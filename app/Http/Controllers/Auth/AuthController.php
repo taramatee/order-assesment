@@ -32,7 +32,7 @@ class AuthController extends Controller
             'password' => Hash::make($data['password'])
           ]);
 
-        return redirect("dashboard")->withSuccess('Successfully loggedin');
+        return redirect("orders")->withSuccess('Successfully loggedin');
     }
 
     public function index() {
@@ -48,7 +48,7 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            return redirect()->intended('orders')
                         ->withSuccess('Successfully loggedin');
         }
         return redirect("login")->withSuccess('invalid credentials');
@@ -56,7 +56,7 @@ class AuthController extends Controller
 
     public function dashboard() {
         if(Auth::check()){
-            return view('dashboard');
+            return view('orders');
         }
         return redirect("login")->withSuccess('Opps! plwase login first');
     }
